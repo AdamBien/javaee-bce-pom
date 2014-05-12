@@ -54,6 +54,9 @@ public class Registration {
     }
 
     public void setTotalPrice(int totalPrice) {
+        if (totalPrice < 0) {
+            throw new IllegalArgumentException("Price cannot be less than zero");
+        }
         this.totalPrice = totalPrice;
     }
 
