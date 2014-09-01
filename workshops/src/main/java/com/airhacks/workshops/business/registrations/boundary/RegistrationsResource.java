@@ -32,14 +32,14 @@ public class RegistrationsResource {
     @POST
     public Response register(Registration request, @Context UriInfo info) {
         JsonObject registration = registrations.register(request);
-        long id = registration.getInt(Registrations.CONFIRMATION_ID);
+        long id = registration.getJsonNumber(Registrations.CONFIRMATION_ID).longValueExact();
         URI uri = info.getAbsolutePathBuilder().path("/" + id).build();
         return Response.created(uri).entity(registration).build();
     }
 
     @GET
     @Path("{id}")
-    public Registration find(@PathParam("id") int registrationId) {
+    public Registration find(@PathParam("id") long registrationId) {
         return registrations.find(registrationId);
     }
 
@@ -54,7 +54,7 @@ public class RegistrationsResource {
 
     @GET
     @Path("{id}/dummy")
-    public Registration dummy(@PathParam("id") int registrationId) {
+    public Registration dummy(@PathParam("id") long registrationId) {
         return new Registration(true, 1, 1);
     }
 

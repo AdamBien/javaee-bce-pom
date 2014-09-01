@@ -41,11 +41,11 @@ public class Registrations {
         return convert(registration);
     }
 
-    Registration find(int registrationId) {
+    public Registration find(long registrationId) {
         return this.em.find(Registration.class, registrationId);
     }
 
-    public JsonObject findAsJson(int registrationId) {
+    public JsonObject findAsJson(long registrationId) {
         return convert(find(registrationId));
     }
 
