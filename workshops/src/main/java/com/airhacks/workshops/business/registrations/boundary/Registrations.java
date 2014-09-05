@@ -41,17 +41,23 @@ public class Registrations {
         return convert(registration);
     }
 
-    Registration find(int registrationId) {
+    public Registration find(long registrationId) {
         return this.em.find(Registration.class, registrationId);
     }
 
-    public JsonObject findAsJson(int registrationId) {
+    public JsonObject findAsJson(long registrationId) {
         return convert(find(registrationId));
     }
 
     List<Registration> all() {
-        return this.em.createNamedQuery(Registration.findAll).
+        List<Registration> results = this.em.createNamedQuery(Registration.findAll).
                 getResultList();
+        
+        results.stream().forEach((reg) -> {
+            reg.setCalculator(priceCalculator::calculateTotal);
+        });
+        
+        return results;
     }
 
     public JsonArray allAsJson() {
