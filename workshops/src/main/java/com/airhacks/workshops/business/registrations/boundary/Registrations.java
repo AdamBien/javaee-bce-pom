@@ -50,8 +50,14 @@ public class Registrations {
     }
 
     List<Registration> all() {
-        return this.em.createNamedQuery(Registration.findAll).
+        List<Registration> results = this.em.createNamedQuery(Registration.findAll).
                 getResultList();
+        
+        results.stream().forEach((reg) -> {
+            reg.setCalculator(priceCalculator::calculateTotal);
+        });
+        
+        return results;
     }
 
     public JsonArray allAsJson() {
