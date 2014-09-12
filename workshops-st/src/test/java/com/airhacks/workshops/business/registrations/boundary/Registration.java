@@ -55,4 +55,12 @@ public class Registration {
         return id;
     }
 
+    public int getNumberOfDays() {
+        return numberOfDays;
+    }
+
+    public int getNumberOfAttendees() {
+        return numberOfAttendees;
+    }
+
 }
