@@ -55,7 +55,7 @@ public class RegistrationsResource {
     @GET
     @Path("{id}/dummy")
     public Registration dummy(@PathParam("id") int registrationId) {
-        return new Registration(true, 1, 1);
+        return new Registration(registrationId);
     }
 
 }
