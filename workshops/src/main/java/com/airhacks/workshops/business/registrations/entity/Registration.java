@@ -39,8 +39,6 @@ public class Registration {
 
     private final static int DAILY_PRICE = 300;
 
-    private int totalPrice;
-
     public Registration(boolean vatIdAvailable, int numberOfDays, int numberOfAttendees) {
         this.numberOfDays = numberOfDays;
         this.numberOfAttendees = numberOfAttendees;
