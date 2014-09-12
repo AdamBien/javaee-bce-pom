@@ -61,7 +61,7 @@ public class Registrations {
                             left.add(right);
                             return left;
                         });
-        return all().stream().map(Registrations::convert).
+        return all().stream().map(this::convert).
                 collect(jsonCollector).build();
 
     }
@@ -75,7 +75,8 @@ public class Registrations {
      * endpoints in case you need the domain objects for a serverside Java web
      * framework.
      */
-    static JsonObject convert(Registration registration) {
+    JsonObject convert(Registration registration) {
+        registration.setCalculator(this.priceCalculator::calculateTotal);
         return Json.createObjectBuilder().
                 add("price", registration.getTotalPrice()).
                 add(CONFIRMATION_ID, registration.getId()).build();
