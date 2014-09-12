@@ -41,7 +41,7 @@ public class Registrations {
         return convert(registration);
     }
 
-    Registration find(int registrationId) {
+    public Registration find(long registrationId) {
         return this.em.find(Registration.class, registrationId);
     }
 
@@ -49,7 +49,7 @@ public class Registrations {
         return convert(find(registrationId));
     }
 
-    List<Registration> all() {
+    public List<Registration> all() {
         return this.em.createNamedQuery(Registration.findAll).
                 getResultList();
     }

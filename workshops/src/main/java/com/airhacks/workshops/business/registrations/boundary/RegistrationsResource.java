@@ -44,7 +44,7 @@ public class RegistrationsResource {
 
     @GET
     @Path("{id}")
-    public Registration find(@PathParam("id") int registrationId) {
+    public Registration find(@PathParam("id") long registrationId) {
         return registrations.find(registrationId);
     }
 
