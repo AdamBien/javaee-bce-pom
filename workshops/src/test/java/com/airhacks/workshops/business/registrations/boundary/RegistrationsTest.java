@@ -60,6 +60,7 @@ public class RegistrationsTest {
         assertTrue(result.isEmpty());
     }
 
+    @Test
     public void convertFilledListToJson() {
         List<Registration> registrations = new ArrayList<>();
         Registration expected = mock(Registration.class);
