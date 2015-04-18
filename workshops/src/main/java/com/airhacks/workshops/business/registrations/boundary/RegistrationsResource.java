@@ -1,6 +1,5 @@
 package com.airhacks.workshops.business.registrations.boundary;
 
-import com.airhacks.workshops.business.registrations.control.VatCalculator;
 import com.airhacks.workshops.business.registrations.entity.Registration;
 import java.net.URI;
 import javax.ejb.Stateless;
@@ -30,9 +29,6 @@ public class RegistrationsResource {
 
     @Inject
     Registrations registrations;
-
-    @Inject
-    VatCalculator calculator;
 
     @POST
     public Response register(Registration request, @Context UriInfo info) {
